@@ -1,6 +1,7 @@
 class Van
   
   DEFAULT_CAPACITY = 20
+  attr_accessor :bikes
 
   def initialize options = {}
     @bikes = []
@@ -22,6 +23,10 @@ class Van
 
   def full?
     bike_count == @capacity
+  end
+
+  def load_broken
+
   end
 
 end

@@ -8,6 +8,8 @@ end
 let(:van) { Van.new capacity: 30 }
 let(:bike) { Bike.new }
 
+##  This code is essentially the same as the docking station ##
+
   it 'should be empty when we create it' do
     expect(van.bike_count).to eq 0
   end
@@ -32,5 +34,9 @@ let(:bike) { Bike.new }
     fill_van
     expect{van.load(bike)}.to raise_error 'Van is full'
   end
+
+##                    end of common code                     ##
+
+
 
 end
