@@ -27,12 +27,32 @@ describe Garage do
 
 # Take the bike back out of the garage and put it back in the van
 
-    garage.send_bike(bike, van) 
+    garage.send_bike(bike, van)
     expect(garage.bike_count).to eq 0
   end
 
 # Also we need to fix the broken bikes before sending them out
 
+  it 'should not send bikes that are broken' do
+    
+# Start with one broken bike, one working one
+    broken_bike, working_bike  = Bike.new, Bike.new
+    broken_bike.break
+
+# Shove them both into a van, then dump the at the garage
+
+    van.load broken_bike
+    van.load working_bike
+
+# Actually if we want to unload all the bikes at once, we should have another method for that
+
+    van.dump garage
+
+# And we need one for filling a van with all the fixed bikes it can handle too
+
+    garage.send_to_capacity(van)
+
+  end
 
 ##  This code is essentially the same as the docking station ##
 
