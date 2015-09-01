@@ -17,8 +17,9 @@ class Garage
     @bikes << bike
   end
 
-  def send_bike bike
-    @bikes.delete(bike)
+  def send_bike(bike, van)
+    departing_bike = @bikes.delete(bike)
+    van.bikes << departing_bike
   end
 
   def full?

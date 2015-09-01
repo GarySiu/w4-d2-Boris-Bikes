@@ -8,20 +8,26 @@ describe Garage do
 
   let(:garage) { Garage.new capacity: 200 }
   let(:bike) { Bike.new }
+  let(:van) { Van.new}
 
 # The main difference between the garage beyond it's larger capacity
 # is the bike need to be dropped off and sent via vans
 
   it 'should be able to receive a bike from a van' do
-    van = Van.new
     van.load bike
     van.unload(bike, garage)
     expect(garage.bikes).to eq [bike]
   end
 
-  it 'should be able to send bikes from the garage' do
-    garage.send_bike bike 
-    unloaded_bike = garage.send_bike bike
+  it 'should be able to load a bike to a van' do
+
+# Load a bike into the garage    
+    van.load bike
+    van.unload(bike, garage)
+
+# Take the bike back out of the garage and put it back in the van
+
+    garage.send_bike(bike, van) 
     expect(garage.bike_count).to eq 0
   end
 
@@ -39,7 +45,7 @@ describe Garage do
     expect(garage.full?).to be true
   end
 
-  it 'should not let you drop off any more bikes if the garage if it is full' do
+  it 'should not let you drop off any more bikes if the garage is full' do
     fill_garage
     expect{garage.drop_off(bike)}.to raise_error 'Garage is full'
   end
