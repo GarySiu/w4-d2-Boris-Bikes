@@ -1,12 +1,13 @@
 require_relative '../lib/van'
+
 describe Van do
 
-def fill_van
-  30.times { van.load(Bike.new) }
-end
+  def fill_van
+    30.times { van.load(Bike.new) }
+  end
 
-let(:van) { Van.new capacity: 30 }
-let(:bike) { Bike.new }
+  let(:van) { Van.new capacity: 30 }
+  let(:bike) { Bike.new }
 
 ##  This code is essentially the same as the docking station ##
 

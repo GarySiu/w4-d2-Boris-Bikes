@@ -25,8 +25,4 @@ class Van
     bike_count == @capacity
   end
 
-  def load_broken
-
-  end
-
-end
+ end
