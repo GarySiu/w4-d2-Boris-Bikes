@@ -26,4 +26,11 @@ class Van
     bike_count == @capacity
   end
 
+  def dump destination
+    while !destination.full? && @bikes.size > 0
+      unloaded_bike = @bikes.pop
+      destination.bikes << unloaded_bike
+    end
+  end
+
  end
