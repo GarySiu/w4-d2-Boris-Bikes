@@ -15,14 +15,15 @@ describe Van do
     expect(van.bike_count).to eq 0
   end
 
-  it 'should be able to load bikes to the van' do
+  it 'should be able to load bikes' do
     van.load bike
     expect(van.bike_count).to eq 1
   end
 
-  it 'should be able to unload bikes from the van' do
-    van.load bike 
-    unloaded_bike = van.unload bike
+  it 'should be able to unload bikes' do
+    van.load bike
+    garage = Garage.new
+    van.unload(bike,garage)
     expect(van.bike_count).to eq 0
   end
 

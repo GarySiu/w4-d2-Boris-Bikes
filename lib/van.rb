@@ -17,8 +17,9 @@ class Van
     @bikes << bike
   end
 
-  def unload bike
-    @bikes.delete(bike)
+  def unload(bike, destination)
+    unloaded_bike = @bikes.delete(bike)
+    destination.bikes << unloaded_bike
   end
 
   def full?

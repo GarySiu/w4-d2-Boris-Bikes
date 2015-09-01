@@ -9,15 +9,14 @@ describe Garage do
   let(:garage) { Garage.new capacity: 200 }
   let(:bike) { Bike.new }
 
-##  This code is essentially the same as the docking station ##
+# The main difference between the garage beyond it's larger capacity
+# is the bike need to be dropped off and sent via vans
 
-  it 'should be empty when we create it' do
-    expect(garage.bike_count).to eq 0
-  end
-
-  it 'should be able to drop off bikes to the garage' do
-    garage.drop_off bike
-    expect(garage.bike_count).to eq 1
+  it 'should be able to receive a bike from a van' do
+    van = Van.new
+    van.load bike
+    van.unload(bike, garage)
+    expect(garage.bikes).to eq [bike]
   end
 
   it 'should be able to send bikes from the garage' do
@@ -26,12 +25,21 @@ describe Garage do
     expect(garage.bike_count).to eq 0
   end
 
-  it 'should know when the garage is fully loaded' do
+# Also we need to fix the broken bikes before sending them out
+
+
+##  This code is essentially the same as the docking station ##
+
+  it 'should be empty when we create it' do
+    expect(garage.bike_count).to eq 0
+  end
+
+  it 'should know when the garage is full' do
     fill_garage
     expect(garage.full?).to be true
   end
 
-  it 'should not let you load the garage if it is full' do
+  it 'should not let you drop off any more bikes if the garage if it is full' do
     fill_garage
     expect{garage.drop_off(bike)}.to raise_error 'Garage is full'
   end
