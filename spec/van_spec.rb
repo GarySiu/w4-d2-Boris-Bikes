@@ -29,6 +29,8 @@ let(:bike) { Bike.new }
   end
 
   it 'should not let you load the van if it is full' do
+    fill_van
+    expect{van.load(bike)}.to raise_error 'Van is full'
   end
 
 end

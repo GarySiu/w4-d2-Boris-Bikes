@@ -1,16 +1,16 @@
 example_id                          | status | run_time        |
 ----------------------------------- | ------ | --------------- |
-./spec/bike_spec.rb[1:1]            | passed | 0.00019 seconds |
-./spec/bike_spec.rb[1:2]            | passed | 0.00024 seconds |
-./spec/bike_spec.rb[1:3]            | passed | 0.00019 seconds |
-./spec/docking_station_spec.rb[1:1] | passed | 0.00017 seconds |
-./spec/docking_station_spec.rb[1:2] | passed | 0.00026 seconds |
-./spec/docking_station_spec.rb[1:3] | passed | 0.00042 seconds |
-./spec/docking_station_spec.rb[1:4] | passed | 0.00027 seconds |
-./spec/docking_station_spec.rb[1:5] | passed | 0.00228 seconds |
-./spec/docking_station_spec.rb[1:6] | passed | 0.00019 seconds |
-./spec/van_spec.rb[1:1]             | passed | 0.00095 seconds |
-./spec/van_spec.rb[1:2]             | passed | 0.00031 seconds |
-./spec/van_spec.rb[1:3]             | passed | 0.00025 seconds |
-./spec/van_spec.rb[1:4]             | passed | 0.00119 seconds |
-./spec/van_spec.rb[1:5]             | passed | 0.00021 seconds |
+./spec/bike_spec.rb[1:1]            | passed | 0.00012 seconds |
+./spec/bike_spec.rb[1:2]            | passed | 0.00014 seconds |
+./spec/bike_spec.rb[1:3]            | passed | 0.00013 seconds |
+./spec/docking_station_spec.rb[1:1] | passed | 0.00018 seconds |
+./spec/docking_station_spec.rb[1:2] | passed | 0.0005 seconds  |
+./spec/docking_station_spec.rb[1:3] | passed | 0.00022 seconds |
+./spec/docking_station_spec.rb[1:4] | passed | 0.00067 seconds |
+./spec/docking_station_spec.rb[1:5] | passed | 0.0025 seconds  |
+./spec/docking_station_spec.rb[1:6] | passed | 0.00015 seconds |
+./spec/van_spec.rb[1:1]             | passed | 0.00008 seconds |
+./spec/van_spec.rb[1:2]             | passed | 0.00014 seconds |
+./spec/van_spec.rb[1:3]             | passed | 0.00018 seconds |
+./spec/van_spec.rb[1:4]             | passed | 0.00016 seconds |
+./spec/van_spec.rb[1:5]             | passed | 0.00019 seconds |

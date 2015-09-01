@@ -12,6 +12,7 @@ class Van
   end
 
   def load bike
+    raise 'Van is full' if full?
     @bikes << bike
   end
 
