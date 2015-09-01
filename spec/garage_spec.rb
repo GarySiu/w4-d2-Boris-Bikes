@@ -1,7 +1,7 @@
 require_relative '../lib/garage'
 
   def fill_garage
-    200.times { garage.load(Bike.new) }
+    200.times { garage.drop_off(Bike.new) }
   end
 
 describe Garage do
@@ -22,7 +22,7 @@ describe Garage do
 
   it 'should be able to send bikes from the garage' do
     garage.send_bike bike 
-    unloaded_bike = garage.unload bike
+    unloaded_bike = garage.send_bike bike
     expect(garage.bike_count).to eq 0
   end
 
@@ -33,7 +33,7 @@ describe Garage do
 
   it 'should not let you load the garage if it is full' do
     fill_garage
-    expect{garage.load(bike)}.to raise_error 'Garage is full'
+    expect{garage.drop_off(bike)}.to raise_error 'Garage is full'
   end
 
 ##                    end of common code                     ##
