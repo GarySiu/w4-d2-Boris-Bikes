@@ -27,7 +27,7 @@ class Van
   end
 
   def dump destination
-    while !destination.full? && @bikes.size > 0
+    while !destination.full? && !@bikes.empty?
       unloaded_bike = @bikes.pop
       destination.bikes << unloaded_bike
     end

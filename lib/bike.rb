@@ -1,5 +1,7 @@
 class Bike
 
+  attr_accessor :broken
+
   def initialize
     @broken = false  #could replace this with just 'fix' to refactor but unclear
   end

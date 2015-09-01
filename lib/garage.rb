@@ -26,5 +26,12 @@ class Garage
     bike_count == @capacity
   end
 
+  def send_to_capacity van
+    while !van.full? && !@bikes.empty?
+      unloaded_bike = @bikes.pop
+      van.bikes << unloaded_bike
+    end
+  end
+
 
 end

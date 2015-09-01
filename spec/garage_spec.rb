@@ -21,37 +21,43 @@ describe Garage do
 
   it 'should be able to load a bike to a van' do
 
-# Load a bike into the garage    
+    # Load a bike into the garage    
     van.load bike
     van.unload(bike, garage)
 
-# Take the bike back out of the garage and put it back in the van
+    # Take the bike back out of the garage and put it back in the van
 
     garage.send_bike(bike, van)
+    
     expect(garage.bike_count).to eq 0
+  end
+
+  it 'should be able to fill a van to capacity' do
+    fill_garage
+    garage.send_to_capacity van
+
+    expect(van.bike_count).to eq 20
   end
 
 # Also we need to fix the broken bikes before sending them out
 
   it 'should not send bikes that are broken' do
     
-# Start with one broken bike, one working one
+    # Start with one broken bike, one working one
     broken_bike, working_bike  = Bike.new, Bike.new
     broken_bike.break
 
-# Shove them both into a van, then dump the at the garage
+    # Shove them both into a van, then dump the at the garage
 
     van.load broken_bike
     van.load working_bike
-
-# Actually if we want to unload all the bikes at once, we should have another method for that
-
     van.dump garage
 
-# And we need one for filling a van with all the fixed bikes it can handle too
+    # Fill a van with all the fixed bikes it can handle
 
     garage.send_to_capacity(van)
 
+    expect(van.bikes).to eq working_bike
   end
 
 ##  This code is essentially the same as the docking station ##
@@ -62,11 +68,13 @@ describe Garage do
 
   it 'should know when the garage is full' do
     fill_garage
+    
     expect(garage.full?).to be true
   end
 
   it 'should not let you drop off any more bikes if the garage is full' do
     fill_garage
+    
     expect{garage.drop_off(bike)}.to raise_error 'Garage is full'
   end
 
