@@ -12,12 +12,12 @@ class Garage
     @bikes.count
   end
 
-  def load bike
+  def drop_off bike
     raise 'Garage is full' if full?
     @bikes << bike
   end
 
-  def unload bike
+  def send_bike bike
     @bikes.delete(bike)
   end
 

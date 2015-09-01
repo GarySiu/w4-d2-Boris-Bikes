@@ -15,13 +15,13 @@ describe Garage do
     expect(garage.bike_count).to eq 0
   end
 
-  it 'should be able to load bikes to the garage' do
-    garage.load bike
+  it 'should be able to drop off bikes to the garage' do
+    garage.drop_off bike
     expect(garage.bike_count).to eq 1
   end
 
-  it 'should be able to unload bikes from the garage' do
-    garage.load bike 
+  it 'should be able to send bikes from the garage' do
+    garage.send_bike bike 
     unloaded_bike = garage.unload bike
     expect(garage.bike_count).to eq 0
   end
