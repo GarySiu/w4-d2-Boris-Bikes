@@ -19,6 +19,7 @@ class Van
 
   def unload(bike, destination)
     unloaded_bike = @bikes.delete(bike)
+    unloaded_bike.fix if destination.instance_of? Garage
     destination.bikes << unloaded_bike
   end
 
@@ -29,6 +30,7 @@ class Van
   def dump destination
     while !destination.full? && !@bikes.empty?
       unloaded_bike = @bikes.pop
+      unloaded_bike.fix if destination.instance_of? Garage
       destination.bikes << unloaded_bike
     end
   end

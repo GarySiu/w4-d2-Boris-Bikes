@@ -39,26 +39,38 @@ describe Garage do
     expect(van.bike_count).to eq 20
   end
 
-# Also we need to fix the broken bikes before sending them out
-
-  it 'should not send bikes that are broken' do
-    
-    # Start with one broken bike, one working one
-    broken_bike, working_bike  = Bike.new, Bike.new
+  it 'should only contain fixed bikes' do
+    broken_bike = Bike.new
     broken_bike.break
-
-    # Shove them both into a van, then dump the at the garage
-
     van.load broken_bike
-    van.load working_bike
     van.dump garage
-
-    # Fill a van with all the fixed bikes it can handle
-
-    garage.send_to_capacity(van)
-
-    expect(van.bikes).to eq working_bike
+    expect(garage.bikes[0].broken?).to be false
   end
+
+##### Turns out all bikes are automagically fixed 
+##### when they touch the garage so the below is redundant. RTFM
+
+
+
+# # Also we need to fix the broken bikes before sending them out
+
+#   it 'should not send bikes that are broken' do
+    
+#     # Start with one broken bike, one working one
+#     broken_bike, working_bike  = Bike.new, Bike.new
+#     broken_bike.break
+
+#     # Shove them both into a van, then dump the at the garage
+
+#     van.load broken_bike
+#     van.load working_bike
+#     van.dump garage
+
+#     # Fill a van with all the fixed bikes it can handle
+
+#     garage.send_to_capacity(van)
+
+#     expect(van.bikes).to eq working_bike
 
 ##  This code is essentially the same as the docking station ##
 
@@ -70,12 +82,6 @@ describe Garage do
     fill_garage
     
     expect(garage.full?).to be true
-  end
-
-  it 'should not let you drop off any more bikes if the garage is full' do
-    fill_garage
-    
-    expect{garage.drop_off(bike)}.to raise_error 'Garage is full'
   end
 
 ##                    end of common code                     ##
